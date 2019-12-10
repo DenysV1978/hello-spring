@@ -31,7 +31,6 @@ public class HelloSpringController {
             return "<head>" +
                     "<style>" +
                     "body {background-color: red}" +
-                    "body"
                     "</style>" +
                     "Hello, "  +
                     name +
