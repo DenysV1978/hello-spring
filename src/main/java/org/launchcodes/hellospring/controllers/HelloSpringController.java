@@ -24,8 +24,20 @@ public class HelloSpringController {
     @RequestMapping(method={RequestMethod.GET, RequestMethod.POST}, value = "anotherHello")
     @ResponseBody
 
-    public String helloWithQueryParam(@RequestParam String name) {
-        return "Hello, " + name +"!"; // here we input /hello/anotherHello?name=Denys
+    public String helloWithQueryParam(@RequestParam String name, @RequestParam String choice) {
+        //System.out.println(name + "    " + choice);
+        if(choice.equals("first")) {
+            //System.out.println("Stop");
+            return "Hello, " + name + "!"; // here we input /hello/anotherHello?name=Denys
+        } else if(choice.equals("second")) {
+            return "Privet, " + name + "!";
+        } else if(choice.equals("third")) {
+            return "Bonjur, " + name + "!";
+        } else if(choice.equals("fourth")) {
+            return "Guten morgen, " + name + "!";
+        } else {
+            return "Nihau, " + name + "!";
+        }
 
     }
 
@@ -43,10 +55,17 @@ public class HelloSpringController {
     public String helloForm() {
         return "<html>" +
                 "<body>" +
-                "<form action='anotherHello' method='get'>" + //submit a request to /hello
+                "<form action='anotherHello' method='post'>" + //submit a request to /hello
                 "<input type='text' name='name'>"+
                 "<input type='submit' value='Greet me!'>" +
-                "</form> +" +
+                "<select name='choice'>" +
+                "<option value='first'>English</option>" +
+                "<option value='second'>Russian</option>" +
+                "<option value='third'>French</option>" +
+                "<option value='fourth'>German</option>" +
+                "<option value='fifth'>Chinese</option>" +
+                 "</select>" +
+                "</form>" +
                 "</body" +
                 "</html>"; // here we input /hello/form and submit Denys
 
