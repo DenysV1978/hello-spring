@@ -26,9 +26,18 @@ public class HelloSpringController {
 
     public String helloWithQueryParam(@RequestParam String name, @RequestParam String choice) {
         //System.out.println(name + "    " + choice);
-        if(choice.equals("first")) {
+        if(choice.contains("first")) {
             //System.out.println("Stop");
-            return "Hello, " + name + "!"; // here we input /hello/anotherHello?name=Denys
+            return "<head>" +
+                    "<style>" +
+                    "body {background-color: red}" +
+                    "body"
+                    "</style>" +
+                    "Hello, "  +
+                    name +
+                    "!" +
+                    "</head>"; // here we input /hello/anotherHello?name=Denys
+
         } else if(choice.equals("second")) {
             return "Privet, " + name + "!";
         } else if(choice.equals("third")) {
@@ -55,7 +64,7 @@ public class HelloSpringController {
     public String helloForm() {
         return "<html>" +
                 "<body>" +
-                "<form action='anotherHello' method='post'>" + //submit a request to /hello
+                "<form action='anotherHello' method='post'>" +  //submit a request to /hello
                 "<input type='text' name='name'>"+
                 "<input type='submit' value='Greet me!'>" +
                 "<select name='choice'>" +
